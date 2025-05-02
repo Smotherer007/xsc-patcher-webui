@@ -12,12 +12,6 @@ The XSC Patcher Web UI ist eine benutzerfreundliche Webanwendung, die auf dem [x
 * **Echtzeit-Protokollierung:** Zeigt den Fortschritt des Parsens und Patchens des `.xsc`-Skripts an.
 * **Backup-Funktionalität**: Erstellt automatisch ein Backup der originalen Datei, bevor der `.xsc`-Patch angewendet wird.
 
-## Screenshots
-
-* **Hauptansicht:** \[Fügen Sie hier einen Screenshot der Hauptansicht der Webanwendung ein]
-* **Log-Konsole:** \[Fügen Sie hier einen Screenshot der Log-Konsole während eines Patchvorgangs ein]
-* **Datei-Upload:** \[Fügen Sie hier einen Screenshot des Datei-Upload-Bereichs ein]
-
 ## Video-Demo
 
 * **Video-Demo:** [https://xsc-patcher.weppelmann.ddnss.de/](https://xsc-patcher.weppelmann.ddnss.de/)
