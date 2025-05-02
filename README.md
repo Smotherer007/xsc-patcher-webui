@@ -2,57 +2,57 @@
 
 ## About the Project
 
-The XSC Patcher Web UI is a user-friendly web application built on top of the [xsc-patcher](https://github.com/Smotherer007/xsc-patcher) command-line tool. It provides a graphical interface for applying `.xsc` patch scripts to binary files directly in your browser. This simplifies the patching process by eliminating the need for command-line operations.
+The XSC Patcher Web UI ist eine benutzerfreundliche Webanwendung, die auf dem [xsc-patcher](https://github.com/Smotherer007/xsc-patcher) Kommandozeilen-Tool aufbaut. Sie bietet eine grafische Oberfläche zum Anwenden von `.xsc`-Patchskripten auf Binärdateien direkt in Ihrem Browser. Dies vereinfacht den Patchvorgang, da keine Kommandozeilenbedienung erforderlich ist.
 
 ## Features
 
-* **`.xsc` Patch Application:** Easily apply `.xsc` patch scripts to binary files through a web interface.
-* **File Uploads:** Upload both the original binary file and the `.xsc` patch file in the browser.
-* **Client-Side Patching:** Performs the `.xsc` patching process entirely within your browser.
-* **Real-time Logging:** Displays the parsing and patching progress of the `.xsc` script.
-* **Backup Functionality**: Automatically creates a backup of the original file before applying the `.xsc` patch.
+* **`.xsc` Patch Anwendung:** Einfaches Anwenden von `.xsc`-Patchskripten auf Binärdateien über eine Webschnittstelle.
+* **Datei-Uploads:** Laden Sie sowohl die originale Binärdatei als auch die `.xsc`-Patchdatei im Browser hoch.
+* **Clientseitiges Patchen:** Führt den `.xsc`-Patchvorgang vollständig in Ihrem Browser aus.
+* **Echtzeit-Protokollierung:** Zeigt den Fortschritt des Parsens und Patchens des `.xsc`-Skripts an.
+* **Backup-Funktionalität**: Erstellt automatisch ein Backup der originalen Datei, bevor der `.xsc`-Patch angewendet wird.
 
 ## Screenshots
 
-* **Main View:** \[Add a screenshot of the main view of the web application here]
-* **Log Console:** \[Add a screenshot of the log console during a patching process here]
-* **File Upload:** \[Add a screenshot of the file upload section here]
+* **Hauptansicht:** \[Fügen Sie hier einen Screenshot der Hauptansicht der Webanwendung ein]
+* **Log-Konsole:** \[Fügen Sie hier einen Screenshot der Log-Konsole während eines Patchvorgangs ein]
+* **Datei-Upload:** \[Fügen Sie hier einen Screenshot des Datei-Upload-Bereichs ein]
 
-## Video Demo
+## Video-Demo
 
-* **Video Demo:** \[Add a link to a video demonstration of the application here]
+* **Video-Demo:** [https://xsc-patcher.weppelmann.ddnss.de/](https://xsc-patcher.weppelmann.ddnss.de/)
 
 ## Installation
 
-### Prerequisites
+### Voraussetzungen
 
-To set up and run this project locally for development or to build it for production, you will need:
+Um dieses Projekt lokal für die Entwicklung einzurichten oder es für die Produktion zu erstellen, benötigen Sie:
 
-* [Node.js](https://nodejs.org/) (LTS version recommended)
-* [npm](https://www.npmjs.com/) (comes with Node.js)
+* [Node.js](https://nodejs.org/) (LTS-Version empfohlen)
+* [npm](https://www.npmjs.com/) (wird mit Node.js geliefert)
 
-### Steps
+### Schritte
 
-1.  **Clone the repository:**
+1.  **Repository klonen:**
 
     ```bash
     git clone [https://github.com/Smotherer007/xsc-patcher-webui.git](https://github.com/Smotherer007/xsc-patcher-webui.git)
     cd xsc-patcher-webui
     ```
 
-2.  **Install dependencies:**
+2.  **Abhängigkeiten installieren:**
 
     ```bash
     npm install
     ```
 
-## Usage
+## Verwendung
 
-### For Development
+### Für Entwicklung
 
-To run the web application locally with hot-reloading for development:
+Um die Webanwendung lokal mit Hot-Reloading für die Entwicklung auszuführen:
 
 ```bash
 npm run serve
-For ProductionTo build the web application for production:npm run build
-The built files will be located in the dist/ directory. You can then deploy these files using any HTTP server.LicenseSee the MIT License for details.AcknowledgmentsTo Smotherer007 for developing the original
+Für ProduktionUm die Webanwendung für die Produktion zu erstellen:npm run build
+Die erstellten Dateien befinden sich im Verzeichnis dist/. Sie können diese Dateien dann mit einem beliebigen HTTP-Server bereitstellen.LizenzWeitere Informationen finden Sie in der MIT-Lizenz.DanksagungAn Smotherer007 für die Entwicklung des originalen Kommandozeilen-Tools [xsc
