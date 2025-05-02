@@ -2,51 +2,50 @@
 
 ## About the Project
 
-The XSC Patcher Web UI ist eine benutzerfreundliche Webanwendung, die auf dem [xsc-patcher](https://github.com/Smotherer007/xsc-patcher) Kommandozeilen-Tool aufbaut. Sie bietet eine grafische Oberfläche zum Anwenden von `.xsc`-Patchskripten auf Binärdateien direkt in Ihrem Browser. Dies vereinfacht den Patchvorgang, da keine Kommandozeilenbedienung erforderlich ist.
+The XSC Patcher Web UI is a user-friendly web application built on top of the [xsc-patcher](https://github.com/Smotherer007/xsc-patcher) command-line tool. It provides a graphical interface for applying `.xsc` patch scripts to binary files directly in your browser. This simplifies the patching process by eliminating the need for command-line operations.
 
 ## Features
 
-* **`.xsc` Patch Anwendung:** Einfaches Anwenden von `.xsc`-Patchskripten auf Binärdateien über eine Webschnittstelle.
-* **Datei-Uploads:** Laden Sie sowohl die originale Binärdatei als auch die `.xsc`-Patchdatei im Browser hoch.
-* **Clientseitiges Patchen:** Führt den `.xsc`-Patchvorgang vollständig in Ihrem Browser aus.
-* **Echtzeit-Protokollierung:** Zeigt den Fortschritt des Parsens und Patchens des `.xsc`-Skripts an.
-* **Backup-Funktionalität**: Erstellt automatisch ein Backup der originalen Datei, bevor der `.xsc`-Patch angewendet wird.
+* **`.xsc` Patch Application:** Easily apply `.xsc` patch scripts to binary files through a web interface.
+* **File Uploads:** Upload both the original binary file and the `.xsc` patch file in the browser.
+* **Client-Side Patching:** Performs the `.xsc` patching process entirely within your browser.
+* **Real-time Logging:** Displays the parsing and patching progress of the `.xsc` script.
+* **Backup Functionality**: Automatically creates a backup of the original file before applying the `.xsc` patch.
 
-## Video-Demo
+## Video Demo
 
-* **Video-Demo:** [https://xsc-patcher.weppelmann.ddnss.de/](https://xsc-patcher.weppelmann.ddnss.de/)
+* **Video Demo:** [https://xsc-patcher.weppelmann.ddnss.de/](https://xsc-patcher.weppelmann.ddnss.de/)
 
 ## Installation
 
-### Voraussetzungen
+### Prerequisites
 
-Um dieses Projekt lokal für die Entwicklung einzurichten oder es für die Produktion zu erstellen, benötigen Sie:
+To set up and run this project locally for development or to build it for production, you will need:
 
-* [Node.js](https://nodejs.org/) (LTS-Version empfohlen)
-* [npm](https://www.npmjs.com/) (wird mit Node.js geliefert)
+* [Node.js](https://nodejs.org/) (LTS version recommended)
+* [npm](https://www.npmjs.com/) (comes with Node.js)
 
-### Schritte
+### Steps
 
-1.  **Repository klonen:**
+1.  **Clone the repository:**
 
     ```bash
     git clone [https://github.com/Smotherer007/xsc-patcher-webui.git](https://github.com/Smotherer007/xsc-patcher-webui.git)
     cd xsc-patcher-webui
     ```
 
-2.  **Abhängigkeiten installieren:**
+2.  **Install dependencies:**
 
     ```bash
     npm install
     ```
 
-## Verwendung
+## Usage
 
-### Für Entwicklung
+### For Development
 
-Um die Webanwendung lokal mit Hot-Reloading für die Entwicklung auszuführen:
+To run the web application locally with hot-reloading for development:
 
 ```bash
 npm run serve
-Für ProduktionUm die Webanwendung für die Produktion zu erstellen:npm run build
-Die erstellten Dateien befinden sich im Verzeichnis dist/. Sie können diese Dateien dann mit einem beliebigen HTTP-Server bereitstellen.LizenzWeitere Informationen finden Sie in der MIT-Lizenz.DanksagungAn Smotherer007 für die Entwicklung des originalen Kommandozeilen-Tools [xsc
+For ProductionTo build
