@@ -6,16 +6,11 @@ The XSC Patcher Web UI is a user-friendly web application built on top of the [x
 
 ## Features
 
-* **Web-Based Interface:** Offers a simple and intuitive graphical interface for the patching process.
-* **File Uploads:** Easily upload your original binary file and the `.xsc` patch file directly in the browser.
-* **Client-Side Patching:** The entire patching process is performed within your browser using JavaScript and `Uint8Array` manipulation. This ensures that your files are not uploaded to a server.
-* **Real-time Logging:** A built-in log console displays the parsing and patching progress, including any warnings or errors.
-* **Custom Output Filename:** Option to specify a desired name for the patched output file.
-* **Direct Download:** Download the patched file directly from the browser once the process is complete.
-* **Input Validation:** Basic validation for file selection and `.xsc` format during the process.
-* **Built with Vue 3 and Vuetify 3:** A modern and responsive user interface framework.
-* **Backup Functionality**: Before applying any patches, the application automatically creates a backup of the original file with a `.bak` extension. This ensures that you can revert to the original file if needed.
-* **Error Handling**: The application includes basic error handling for file operations, patch format, and application logic.
+* **`.xsc` Patch Application:** Easily apply `.xsc` patch scripts to binary files through a web interface.
+* **File Uploads:** Upload both the original binary file and the `.xsc` patch file in the browser.
+* **Client-Side Patching:** Performs the `.xsc` patching process entirely within your browser.
+* **Real-time Logging:** Displays the parsing and patching progress of the `.xsc` script.
+* **Backup Functionality**: Automatically creates a backup of the original file before applying the `.xsc` patch.
 
 ## Screenshots
 
@@ -60,4 +55,4 @@ To run the web application locally with hot-reloading for development:
 ```bash
 npm run serve
 For ProductionTo build the web application for production:npm run build
-The built files will be located in the dist/ directory. You can then deploy these files using any HTTP server.LicenseSee the MIT License for details.Acknowledgments
+The built files will be located in the dist/ directory. You can then deploy these files using any HTTP server.LicenseSee the MIT License for details.AcknowledgmentsTo Smotherer007 for developing the original
