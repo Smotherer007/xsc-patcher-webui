@@ -31,6 +31,12 @@ export default [
     },
   },
   {
+    files: ["vite.config.ts"],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
+  {
     files: ["**/*.d.ts"],
     rules: {
       "no-unused-vars": "off",
