@@ -38,10 +38,10 @@ jobs:
       - name: Type check
         run: npm run type-check
 
-      - name: Build Style Guide
+      - name: Build app
         run: npm run build
         env:
-          BASE_URL: /${{ github.event.repository.name }}/
+          VITE_BASE: /${{ github.event.repository.name }}/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
