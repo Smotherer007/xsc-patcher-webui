@@ -1,0 +1,128 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--crt-bg-darker, #000);
+  color: var(--crt-primary, #33ff33);
+  font-family: var(--crt-font-family, "Courier New", monospace);
+}
+
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.hero .subtitle {
+  display: block;
+  max-width: 620px;
+  margin: 10px auto 0;
+  color: rgba(51, 255, 51, 0.8);
+}
+
+.panels {
+  display: grid;
+  gap: 24px;
+}
+
+.panel {
+  padding: 24px;
+  border: var(--crt-border, 1px solid rgba(51, 255, 51, 0.4));
+  background: var(--crt-bg-dark, #0a0a0a);
+  box-shadow: var(--crt-glow, 0 0 10px rgba(51, 255, 51, 0.5));
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.field input[type="file"],
+.field input[type="text"] {
+  padding: 10px 12px;
+  background: var(--crt-bg-light, #1a1a1a);
+  border: 1px solid rgba(51, 255, 51, 0.4);
+  color: inherit;
+  font-family: inherit;
+}
+
+.field input[type="file"]:focus,
+.field input[type="text"]:focus {
+  outline: 2px solid rgba(51, 255, 51, 0.7);
+  outline-offset: 2px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.log-console {
+  max-height: 260px;
+  overflow-y: auto;
+  background: #111;
+  border: 1px solid rgba(51, 255, 51, 0.3);
+  padding: 12px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.log-entry {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 8px;
+  margin: 0;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(51, 255, 51, 0.15);
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-time {
+  color: rgba(51, 255, 51, 0.7);
+}
+
+.log-entry.warn .log-message {
+  color: #ffcc00;
+}
+
+.log-entry.error .log-message {
+  color: #ff6666;
+  font-weight: 700;
+}
+
+.log-entry.success .log-message {
+  color: #66ff66;
+}
+
+@media (min-width: 960px) {
+  .panels {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: start;
+  }
+}
