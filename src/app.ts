@@ -127,9 +127,7 @@ export class XscPatcherApp extends LitElement {
       this.addLog("Patch file decoded.");
 
       this.addLog("Parsing patch instructions from file content...");
-      const replacements = await parseXscString(patchString, (msg, type) =>
-        this.addLog(`[Parser] ${msg}`, type)
-      );
+      const replacements = parseXscString(patchString);
 
       if (!replacements || replacements.length === 0) {
         const noRulesError =
@@ -148,11 +146,7 @@ export class XscPatcherApp extends LitElement {
       this.addLog("Original file read successfully.");
 
       this.addLog("Applying patch to original file data...");
-      const patchedUint8Array = await applyPatch(
-        originalUint8Array,
-        replacements,
-        (msg, type) => this.addLog(`[Patcher] ${msg}`, type)
-      );
+      const patchedUint8Array = applyPatch(originalUint8Array, replacements);
 
       if (patchedUint8Array === null) {
         const patchError =
