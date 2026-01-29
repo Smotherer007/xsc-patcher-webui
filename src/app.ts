@@ -8,9 +8,10 @@ import {
 } from "./lib/patcher";
 
 type LogEntry = {
-  timestamp: string;
-  text: string;
-  type: LogType;
+  timestamp: Date;
+  level: LogType;
+  message: string;
+  source?: string;
 };
 
 @customElement("xsc-patcher-app")
@@ -29,9 +30,9 @@ export class XscPatcherApp extends LitElement {
   @state() private loading = false;
   @state() private errorMessage: string | null = null;
   @state() private successMessage: string | null = null;
-  @state() private logMessages: LogEntry[] = [];
+  @state() private logEntries: LogEntry[] = [];
 
-  @query(".log-console") private logConsole?: HTMLDivElement;
+  @query("crt-log") private logConsole?: HTMLElement;
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
@@ -42,33 +43,53 @@ export class XscPatcherApp extends LitElement {
 
   private addLog(text: string, type: LogType = "info") {
     const now = new Date();
-    const timestamp = `${now.getHours().toString().padStart(2, "0")}:${now
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}:${now.getSeconds().toString().padStart(2, "0")}`;
+    this.logEntries = [
+      ...this.logEntries,
+      { timestamp: now, level: type, message: text, source: "UI" },
+    ];
 
-    this.logMessages = [...this.logMessages, { timestamp, text, type }];
-    this.updateComplete.then(() => this.scrollLogToBottom());
-  }
-
-  private scrollLogToBottom() {
-    if (this.logConsole) {
-      this.logConsole.scrollTop = this.logConsole.scrollHeight;
-    }
+    const log = this.logConsole as
+      | (HTMLElement & {
+          info?: (msg: string, src?: string) => void;
+          warn?: (msg: string, src?: string) => void;
+          error?: (msg: string, src?: string) => void;
+          success?: (msg: string, src?: string) => void;
+          debug?: (msg: string, src?: string) => void;
+        })
+      | undefined;
+    log?.[type]?.(text, "UI");
   }
 
   private clearLog() {
-    this.logMessages = [];
+    this.logEntries = [];
+  }
+
+  private getFilesFromEvent(event: Event): File[] {
+    const target = event.target as HTMLInputElement & { files?: FileList };
+    const detailFiles = (event as CustomEvent)?.detail?.files as
+      | File[]
+      | undefined;
+    if (target?.files) {
+      return Array.from(target.files);
+    }
+    if (detailFiles) {
+      return detailFiles;
+    }
+    return [];
   }
 
   private handleFileChange(event: Event, field: "original" | "patch") {
-    const input = event.target as HTMLInputElement;
-    const file = input.files?.[0] ?? null;
+    const file = this.getFilesFromEvent(event)[0] ?? null;
     if (field === "original") {
       this.originalFile = file;
     } else {
       this.patchFile = file;
     }
+  }
+
+  private handleOutputChange(event: Event) {
+    const target = event.target as HTMLInputElement & { value?: string };
+    this.outputFilename = target?.value ?? "";
   }
 
   private calculateOutputFilename(): string {
@@ -196,6 +217,8 @@ export class XscPatcherApp extends LitElement {
   render() {
     return html`
       <div class="app-container">
+        <crt-overlay contained></crt-overlay>
+        <div class="app-shell">
           <div class="hero">
             <crt-heading level="1">XSC Patcher Web UI</crt-heading>
             <crt-text class="subtitle">
@@ -216,40 +239,31 @@ export class XscPatcherApp extends LitElement {
               : null}
 
             <div class="field">
-              <label>
-                <crt-text>Original File (e.g., binary file)</crt-text>
-              </label>
-              <input
-                type="file"
+              <crt-file-input
+                label="ORIGINAL FILE"
+                placeholder="Choose a file..."
                 @change=${(event: Event) =>
                   this.handleFileChange(event, "original")}
-              />
+              ></crt-file-input>
             </div>
 
             <div class="field">
-              <label>
-                <crt-text>Patch File (.xsc)</crt-text>
-              </label>
-              <input
-                type="file"
+              <crt-file-input
+                label="PATCH FILE (.xsc)"
+                placeholder="Choose a patch..."
                 accept=".xsc"
                 @change=${(event: Event) =>
                   this.handleFileChange(event, "patch")}
-              />
+              ></crt-file-input>
             </div>
 
             <div class="field">
-              <label>
-                <crt-text>Desired Output Filename (optional)</crt-text>
-              </label>
-              <input
-                type="text"
+              <crt-input
+                label="DESIRED OUTPUT FILENAME (OPTIONAL)"
                 placeholder="e.g., my_patched_script.xsc"
                 .value=${this.outputFilename}
-                @input=${(event: Event) =>
-                  (this.outputFilename = (event.target as HTMLInputElement)
-                    .value)}
-              />
+                @input=${this.handleOutputChange}
+              ></crt-input>
             </div>
 
             <div class="actions">
@@ -273,25 +287,17 @@ export class XscPatcherApp extends LitElement {
           <div class="panel">
             <div class="panel-header">
               <crt-heading level="3">Process Log</crt-heading>
-              ${this.logMessages.length
+              ${this.logEntries.length
                 ? html`<crt-button variant="ghost" @click=${this.clearLog}
                     >Clear Log</crt-button
                   >`
                 : null}
             </div>
-            <div class="log-console">
-              ${this.logMessages.map(
-                (entry) => html`
-                  <p class="log-entry ${entry.type}">
-                    <span class="log-time">${entry.timestamp}</span>
-                    <span class="log-message">${entry.text}</span>
-                  </p>
-                `
-              )}
-            </div>
+            <crt-log title="APPLICATION LOG" .entries=${this.logEntries}></crt-log>
           </div>
           </div>
         </div>
+      </div>
     `;
   }
 }

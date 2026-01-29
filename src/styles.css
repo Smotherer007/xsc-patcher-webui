@@ -80,44 +80,8 @@ body {
   justify-content: flex-end;
 }
 
-.log-console {
-  max-height: 260px;
-  overflow-y: auto;
-  background: #111;
-  border: 1px solid rgba(51, 255, 51, 0.3);
-  padding: 12px;
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-.log-entry {
-  display: grid;
-  grid-template-columns: 84px 1fr;
-  gap: 8px;
-  margin: 0;
-  padding: 4px 0;
-  border-bottom: 1px solid rgba(51, 255, 51, 0.15);
-}
-
-.log-entry:last-child {
-  border-bottom: none;
-}
-
-.log-time {
-  color: rgba(51, 255, 51, 0.7);
-}
-
-.log-entry.warn .log-message {
-  color: #ffcc00;
-}
-
-.log-entry.error .log-message {
-  color: #ff6666;
-  font-weight: 700;
-}
-
-.log-entry.success .log-message {
-  color: #66ff66;
+crt-log {
+  margin-top: 8px;
 }
 
 @media (min-width: 960px) {
